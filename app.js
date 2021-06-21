@@ -4,19 +4,23 @@ let full_list=document.querySelector(".todo-list")
 let list_item=document.querySelector(".list_item")
 
 
-
 // getting tasks fro local storage if any exist
 if(localStorage.getItem("tasks")==="undefined"){
     let arr=[]
-}else{
-   arr=JSON.parse(localStorage.getItem("tasks"))
-   arr.forEach(element => {
-    let new_item= document.createElement("li")
-    new_item.appendChild(document.createTextNode(element))
-    full_list.appendChild(new_item)
-    new_item.setAttribute("class","list_item")
-   });
 }
+else if(localStorage.getItem("tasks")===null){
+    let arr=[]
+    localStorage.setItem("tasks",JSON.stringify(arr))
+}
+else{
+    arr=JSON.parse(localStorage.getItem("tasks"))
+    arr.forEach(element => {
+     let new_item= document.createElement("li")
+     new_item.appendChild(document.createTextNode(element))
+     full_list.appendChild(new_item)
+     new_item.setAttribute("class","list_item")
+    });
+ }
 
 
 // adding task to a list
