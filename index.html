@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
+    <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/e057b28e7b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <h2>To-Do list <i class="fas fa-clipboard-list"></i></h2>
 
-    <input type="text" id="user-input">
+    <input type="text" id="user-input" onfocus="this.value=''">
     <button id="add">add tasks</button>
     <ul class="todo-list"></ul>
     <script src="./app.js"></script>
