@@ -4,7 +4,7 @@ let full_list=document.querySelector(".todo-list")
 let list_item=document.querySelector(".list_item")
 
 
-// getting tasks fro local storage if any exist
+// getting tasks fro local storage if any exist else set it 
 if(localStorage.getItem("tasks")==="undefined"){
     let arr=[]
 }
@@ -17,8 +17,9 @@ else{
     arr.forEach(element => {
      let new_item= document.createElement("li")
      new_item.appendChild(document.createTextNode(element))
+     new_item.innerHTML +=`<a href="#"><i class="fas fa-trash-alt"></i></a>`
+     new_item.childNodes[1].setAttribute("class","list_item")
      full_list.appendChild(new_item)
-     new_item.setAttribute("class","list_item")
     });
  }
 
@@ -30,8 +31,9 @@ add_task.addEventListener("click",()=>{
     }
     else{
         let new_item= document.createElement("li")
-        new_item.setAttribute("class","list_item")
         new_item.appendChild(document.createTextNode(`${user_input.value}`))
+        new_item.innerHTML +=`<a href="#"><i class="fas fa-trash-alt"></i></a>`
+        new_item.childNodes[1].setAttribute("class","list_item")
         full_list.appendChild(new_item)
         arr.push(user_input.value)
         localStorage.setItem("tasks",JSON.stringify(arr))
@@ -41,9 +43,12 @@ add_task.addEventListener("click",()=>{
 
 // removing task from list
 document.body.addEventListener("click",(e)=>{
-    if(e.target.classList.contains("list_item")){
-        full_list.removeChild(e.target)
-        let idx = arr.indexOf(e.target.innerHTML);
+    if(e.target.parentElement.classList.contains("list_item")){
+        console.log(e.target.parentElement.parentElement.innerText)
+        full_list.removeChild(e.target.parentElement.parentElement)
+        
+        // removing element from array after knowing it's index
+        let idx = arr.indexOf(e.target.parentElement.parentElement.innerText);
         if(idx !=-1){
             arr.splice(idx,1)
         }
