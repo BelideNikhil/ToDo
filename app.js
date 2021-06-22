@@ -60,7 +60,7 @@ add_task.addEventListener("click",()=>{
         full_list.appendChild(new_item)
         arr.push(user_input.value)
         localStorage.setItem("tasks",JSON.stringify(arr))
-        window.location.reload()
+        setTimeout(window.location.reload(),1)
     }
 })
 
@@ -122,7 +122,7 @@ document.body.addEventListener("click",(e)=>{
         }
         localStorage.setItem("tasks",JSON.stringify(arr))
         localStorage.setItem("completed",JSON.stringify(arr2))
-        window.location.reload()
+        setTimeout(window.location.reload(),1)
     }
     
     
