@@ -4,9 +4,7 @@ let full_list=document.querySelector(".todo-list")
 let list_item=document.querySelector(".list_item")
 let checkbox=document.querySelector("input[type=\"checkbox\"]")
 
-
-
-// getting tasks fro local storage if any exist else set it 
+// getting tasks from local storage if any exist else set it 
 if(localStorage.getItem("tasks")==="undefined"){
     let arr=[]
 }
@@ -25,8 +23,7 @@ else{
     });
 }
 
-
-// 
+// getting completed tasks from local storage if any exist else set it 
 if(localStorage.getItem("completed")==="undefined"){
     let arr2=[]
 }
@@ -46,7 +43,6 @@ else{
     });
 }
 
-
 // adding task to a list
 add_task.addEventListener("click",()=>{
     if(user_input.value===""){
@@ -64,12 +60,13 @@ add_task.addEventListener("click",()=>{
     }
 })
 
+// this pops from main arr and psuhes to completed array
 function run(){
     for( let i=0;i<arr2.length;i++){
         for(let j=0;j<arr.length;j++){
             if(arr2[i]===arr[j]){
-                console.log(arr2[i])
-                console.log( arr.splice(arr2[i]))
+                arr2[i]
+                arr.splice(arr2[i])
             }
         }
     }
@@ -78,23 +75,19 @@ function run(){
 // removing task from completed list
 document.body.addEventListener("click",(e)=>{
     if(e.target.parentElement.parentElement.classList.contains("strike")){
-    
         full_list.removeChild(e.target.parentElement.parentElement)
         // removing element from array after knowing it's index
         let idx = arr2.indexOf(e.target.parentElement.parentElement.innerText);
         if(idx !=-1){
             arr2.splice(idx,1)
         }
-        
         localStorage.setItem("tasks",JSON.stringify(arr))
         localStorage.setItem("completed",JSON.stringify(arr2))
-        
     }
 })
 
 // deleting task from list
 document.body.addEventListener("click",(e)=>{
-    
     if(e.target.parentElement.classList.contains("list_item")){
         run
         full_list.removeChild(e.target.parentElement.parentElement)
@@ -103,13 +96,10 @@ document.body.addEventListener("click",(e)=>{
         if(idx !=-1){
             arr.splice(idx,1)
         }
-        
         localStorage.setItem("tasks",JSON.stringify(arr))
         localStorage.setItem("completed",JSON.stringify(arr2))
     }
 })
-
-
 
 // crossing the li and removing from local if the task is complete
 document.body.addEventListener("click",(e)=>{
@@ -124,8 +114,6 @@ document.body.addEventListener("click",(e)=>{
         localStorage.setItem("completed",JSON.stringify(arr2))
         setTimeout(window.location.reload(),1)
     }
-    
-    
 })
 
 

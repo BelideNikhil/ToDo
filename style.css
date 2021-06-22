@@ -53,6 +53,7 @@ header{
     gap: 0;
     border: 2px solid var(--primary-color);
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 #input-section .container >*{
     padding: 12px;
@@ -69,7 +70,8 @@ header{
     justify-content: center;
     align-items: center;
     background: var(--secondary-color);
-    margin: 10px 0;
-    padding: 10px;
+    margin: 15px 0;
+    padding: 12px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
