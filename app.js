@@ -5,6 +5,7 @@ let list_item=document.querySelector(".list_item")
 let checkbox=document.querySelector("input[type=\"checkbox\"]")
 
 
+
 // getting tasks fro local storage if any exist else set it 
 if(localStorage.getItem("tasks")==="undefined"){
     let arr=[]
@@ -18,7 +19,7 @@ else{
     arr.forEach(element => {
      let new_item= document.createElement("li")
      new_item.appendChild(document.createTextNode(element))
-     new_item.innerHTML +=`<input type="checkbox"><a href="#"><i class="fas fa-trash-alt"></i></a>`
+     new_item.innerHTML +=`<input type="checkbox"><a href="#"><i class="far fa-trash-alt"></i></a>`
      new_item.childNodes[2].setAttribute("class","list_item")
      full_list.appendChild(new_item)
     });
@@ -39,7 +40,7 @@ else{
     arr2.forEach(element => {
         let new_item= document.createElement("li")
         new_item.appendChild(document.createTextNode(element))
-        new_item.innerHTML +=`<a href="#"><i class="fas fa-trash-alt"></i></a>`
+        new_item.innerHTML +=`<a href="#"><i class="far fa-trash-alt"></i></a>`
         new_item.setAttribute("class","strike ")
         full_list.appendChild(new_item)
     });
@@ -54,7 +55,7 @@ add_task.addEventListener("click",()=>{
     else{
         let new_item= document.createElement("li")
         new_item.appendChild(document.createTextNode(`${user_input.value}`))
-        new_item.innerHTML +=`<input type="checkbox"><a href="#"><i class="fas fa-trash-alt"></i></a>`
+        new_item.innerHTML +=`<input type="checkbox"><a href="#"><i class="far fa-trash-alt"></i></a>`
         new_item.childNodes[2].setAttribute("class","list_item ")
         full_list.appendChild(new_item)
         arr.push(user_input.value)
@@ -64,17 +65,15 @@ add_task.addEventListener("click",()=>{
 })
 
 function run(){
-    
-for( let i=0;i<arr2.length;i++){
-    for(let j=0;j<arr.length;j++){
-        if(arr2[i]===arr[j]){
-            console.log(arr2[i])
-            console.log( arr.splice(arr2[i]))
+    for( let i=0;i<arr2.length;i++){
+        for(let j=0;j<arr.length;j++){
+            if(arr2[i]===arr[j]){
+                console.log(arr2[i])
+                console.log( arr.splice(arr2[i]))
+            }
         }
     }
 }
-}
-
 
 // removing task from completed list
 document.body.addEventListener("click",(e)=>{

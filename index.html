@@ -9,11 +9,28 @@
     <script src="https://kit.fontawesome.com/e057b28e7b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2>To-Do list <i class="fas fa-clipboard-list"></i></h2>
+    <header>
+       <div class="container">
+           <h1>To-Do list <i class="fas fa-clipboard-list"></i></h1>
+       </div>
+    </header>
 
-    <input type="text" id="user-input" onfocus="this.value=''">
-    <button id="add">add tasks</button>
-    <ul class="todo-list"></ul>
+   <section>
+        <div id="input-section">
+            <div class="container">
+                <input type="text" id="user-input" onfocus="this.value=''" placeholder="Type Something...">
+                <button id="add"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        
+        <div id="output-section">
+            <div class="container">
+                <ul class="todo-list"></ul>
+            </div>
+        </div>
+   </section>
+
+    <!-- script link -->
     <script src="./app.js"></script>
 </body>
 </html>
