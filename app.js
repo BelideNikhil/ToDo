@@ -4,6 +4,8 @@ let full_list=document.querySelector(".todo-list")
 let list_item=document.querySelector(".list_item")
 let checkbox=document.querySelector("input[type=\"checkbox\"]")
 
+let no_data=document.querySelector("#error")
+
 // getting tasks from local storage if any exist else set it 
 if(localStorage.getItem("tasks")==="undefined"){
     let arr=[]
@@ -46,7 +48,10 @@ else{
 // adding task to a list
 add_task.addEventListener("click",()=>{
     if(user_input.value===""){
-        alert("please enter a task")
+        no_data.innerHTML="Please enter data to add a task."
+        setTimeout(()=>{
+            no_data.innerHTML=""
+        },2000)
     }
     else{
         let new_item= document.createElement("li")
@@ -56,7 +61,7 @@ add_task.addEventListener("click",()=>{
         full_list.appendChild(new_item)
         arr.push(user_input.value)
         localStorage.setItem("tasks",JSON.stringify(arr))
-        setTimeout(window.location.reload(),1)
+        setTimeout(window.location.reload(),0.1)
     }
 })
 
@@ -112,7 +117,7 @@ document.body.addEventListener("click",(e)=>{
         }
         localStorage.setItem("tasks",JSON.stringify(arr))
         localStorage.setItem("completed",JSON.stringify(arr2))
-        setTimeout(window.location.reload(),1)
+        setTimeout(window.location.reload(),0.1)
     }
 })
 
